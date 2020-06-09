@@ -1,0 +1,43 @@
+export default {
+	name: 'single',
+	title: 'Single',
+	type: 'document',
+	fields: [
+		{
+			name: 'name',
+			title: 'Name',
+			type: 'string',
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'name',
+				slugify: (input) => input.toLowerCase().replace(/\s+/g, '-'),
+			},
+		},
+		{
+			name: 'tracks',
+			title: 'Tracks',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'track' }],
+				},
+			],
+			options: {
+				filter: ({ document }) => {
+					const ids = document.track.map((trk) => trk._ref).filter(Boolean)
+					return {
+						filter: '!(_id in $ids)',
+						params: { ids },
+					}
+				},
+			},
+			validation: (Rule) => Rule.required(),
+		},
+	],
+}

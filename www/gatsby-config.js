@@ -6,5 +6,13 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
+  plugins: [
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "xj6nlv3f",
+        dataset: "production",
+      },
+    },
+  ],
 }
