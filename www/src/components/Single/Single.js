@@ -1,8 +1,10 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react"
 import { Link } from "gatsby"
+import { MusicPlayerContext } from "../../context/MusicPlayerContext"
 
 const Single = ({ name, tracks }) => {
   const [duration, setDuration] = useState([])
+  const [state, setState] = useContext(MusicPlayerContext)
   const audioRef = useRef([new Array(Number(tracks.length))])
   function fmtMSS(s) {
     s = Math.floor(s)
@@ -10,6 +12,7 @@ const Single = ({ name, tracks }) => {
   }
 
   useEffect(() => {
+    setState(state => ({ ...state, tracks: tracks }))
     function getTrackLength(track) {
       track.addEventListener("loadedmetadata", function () {
         for (let i = 0; i <= tracks.length; i++) {
@@ -22,12 +25,17 @@ const Single = ({ name, tracks }) => {
     for (let i = 0; i < audioRef.current.length; i++) {
       getTrackLength(audioRef.current[i])
     }
-  }, [duration, tracks.length])
+  }, [duration, tracks.length, setState, tracks])
 
+  console.log("Single -> state", state)
   return (
     <>
       <h2>{name}</h2>
-
+      <button
+        onClick={() => setState(state => ({ ...state, clicked: "CLICKED" }))}
+      >
+        {state.clicked}
+      </button>
       <ul>
         {tracks.map((track, i) => (
           <li key={track._id}>
