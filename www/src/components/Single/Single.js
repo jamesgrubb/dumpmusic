@@ -37,7 +37,9 @@ const Single = ({ name, tracks }) => {
                 ref={el => (audioRef.current[i] = el)}
                 src={track.file}
                 controls
-              />
+              >
+                <track kind="captions" name={track.name} />
+              </audio>
               <i>{duration[i]}</i>
             </div>
           </li>
