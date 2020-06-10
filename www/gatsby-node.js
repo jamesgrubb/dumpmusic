@@ -4,7 +4,7 @@ exports.createPages = async ({
   reporter,
 }) => {
   createPage({
-    path: "/",
+    path: "/singles",
     component: require.resolve("./src/templates/template-singles.js"),
   })
 
