@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-const MusicPlayerContext = React.createContext([{}, () => {}])
+export const MusicPlayerContext = React.createContext([{}, () => {}])
 
 const MusicPlayerProvider = ({ children }) => {
   useEffect(() => {
@@ -17,4 +17,4 @@ const MusicPlayerProvider = ({ children }) => {
   )
 }
 
-export { MusicPlayerContext, MusicPlayerProvider }
+export default MusicPlayerProvider
