@@ -1,8 +1,16 @@
 import React, { useRef, useEffect, useState, useContext } from "react"
 import { Link } from "gatsby"
 import { MusicPlayerContext } from "../../context/MusicPlayerContext"
+import MusicPlayerProvider from "../../context/MusicPlayerContext"
+import useMusicPlayer from "../../hooks/useMusicPlayer"
 
 const Single = ({ name, tracks }) => {
+  const {
+    togglePlay,
+    playTrack,
+    currentTrackName,
+    trackList,
+  } = useMusicPlayer()
   const [duration, setDuration] = useState([])
   const [state, setState] = useContext(MusicPlayerContext)
   const audioRef = useRef([new Array(Number(tracks.length))])
@@ -29,7 +37,7 @@ const Single = ({ name, tracks }) => {
 
   console.log("Single -> state", state)
   return (
-    <>
+    <MusicPlayerProvider>
       <h2>{name}</h2>
       <button
         onClick={() => setState(state => ({ ...state, clicked: "CLICKED" }))}
@@ -54,7 +62,7 @@ const Single = ({ name, tracks }) => {
         ))}
       </ul>
       <Link to="/singles">Back</Link>
-    </>
+    </MusicPlayerProvider>
   )
 }
 
