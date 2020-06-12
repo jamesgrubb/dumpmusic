@@ -51,14 +51,7 @@ const Single = ({ name, tracks }) => {
           <li key={track._id}>
             <div>
               <strong>{track.name}</strong>
-              {/* <audio
-                ref={el => (audioRef.current[i] = el)}
-                src={track.file}
-                controls 
-              >
-                <track kind="captions" name={track.name} />
-              </audio> */}
-              {/* <i>{duration[i]}</i> */}\
+
               <button onClick={() => playTrack(i)}>
                 {currentTrackName === track.name && isPlaying
                   ? "PAUSE"
