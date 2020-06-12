@@ -10,25 +10,47 @@ const useMusicPlayer = () => {
   }
 
   function makeAudio(tracks) {
-    const ARR = new Array()
-    for (let i = 0; i <= tracks.length; i++) {
-      const au = document.createElement("audio")
-      ARR.push(au)
-    }
-    console.log("makeAudio -> ARR", ARR)
-    tracks.forEach((track, i) => {
-      //   ARR[i] = document.createElement("audio")
-      //   console.log("ARR is " + ARR[i])
-      ARR[i].src = track.file
-      ARR[i].addEventListener("loadedmetadata", function () {
-        setState(state => ({
-          ...state,
-          tracks: state.tracks.concat(fmtMSS(ARR[i].duration)),
-        }))
+    let audioArr = new Array()
+    tracks.forEach(({ file }) => {
+      console.log(file)
+      const audio = document.createElement("audio")
+      audio.src = file
+      audio.addEventListener("loadedmetadata", function () {
+        audioArr.push([audio.duration])
+        console.log("makeAudio -> audioArr", audioArr)
+        setState(state =>
+          Object.assign(
+            {},
+            state,
+            tracks.map((track, index) =>
+              Object.assign(track, { duration: audioArr[index] })
+            )
+          )
+        )
       })
     })
   }
+
   //   function makeAudio(tracks) {
+  //     const ARR = new Array()
+  //     for (let i = 0; i <= tracks.length; i++) {
+  //       const au = document.createElement("audio")
+  //       ARR.push(au)
+  //     }
+  //     console.log("makeAudio -> ARR", ARR)
+  //     tracks.forEach((track, i) => {
+  //       //   ARR[i] = document.createElement("audio")
+  //       //   console.log("ARR is " + ARR[i])
+  //       ARR[i].src = track.file
+  //       ARR[i].addEventListener("loadedmetadata", function () {
+  //         setState(state => ({
+  //           ...state,
+  //           tracks: state.tracks.concat(fmtMSS(ARR[i].duration)),
+  //         }))
+  //       })
+  //     })
+  //   }
+  //   //   function makeAudio(tracks) {
   //     for (let i = 0; i <= tracks.length; i++) {
   //       const auARR = new Array(tracks.length)
   //       if (tracks.length) {

@@ -24,6 +24,7 @@ const Single = ({ name, tracks }) => {
   // }
 
   useEffect(() => {
+    stopPlay()
     makeAudio(tracks)
     setState(state => ({ ...state, tracks: tracks, currentTrackIndex: null }))
     // function getTrackLength(track) {
@@ -64,7 +65,7 @@ const Single = ({ name, tracks }) => {
                   : "PLAY"}
               </button>
               <p>current track index {currentTrackIndex}</p>
-              <p>{state.duration}</p>
+              <p>{track.duration}</p>
             </div>
           </li>
         ))}
