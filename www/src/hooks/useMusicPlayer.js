@@ -23,7 +23,7 @@ const useMusicPlayer = () => {
             {},
             state,
             tracks.map((track, index) =>
-              Object.assign(track, { duration: audioArr[index] })
+              Object.assign(track, { duration: fmtMSS(audioArr[index]) })
             )
           )
         )

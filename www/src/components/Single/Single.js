@@ -65,7 +65,7 @@ const Single = ({ name, tracks }) => {
                   : "PLAY"}
               </button>
               <p>current track index {currentTrackIndex}</p>
-              <p>{track.duration}</p>
+              <p>{(track.duration && track.duration) || "Loading..."}</p>
             </div>
           </li>
         ))}
