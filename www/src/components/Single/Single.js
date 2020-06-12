@@ -44,6 +44,9 @@ const Single = ({ name, tracks }) => {
           </li>
         ))}
       </ul>
+      <marquee behavior="scroll" direction="left">
+        {currentTrackName}
+      </marquee>
       <Link to="/singles">Back</Link>
     </MusicPlayerProvider>
   )
