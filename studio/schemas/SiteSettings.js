@@ -1,6 +1,6 @@
 export default {
-	name: 'single',
-	title: 'Single',
+	name: 'siteSettings',
+	title: 'Settings',
 	type: 'document',
 	fields: [
 		{
