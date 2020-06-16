@@ -62,9 +62,24 @@ const useMusicPlayer = () => {
     }
     setState(state => ({ ...state, isPlaying: !state.isPlaying }))
   }
+  function playPreviousTrack() {
+    const newIndex =
+      (((state.currentTrackIndex + -1) % state.tracks.length) +
+        state.tracks.length) %
+      state.tracks.length
+    playTrack(newIndex)
+  }
+
+  // Play the next track in the tracks array
+  function playNextTrack() {
+    const newIndex = (state.currentTrackIndex + 1) % state.tracks.length
+    playTrack(newIndex)
+  }
   return {
     stopPlay,
     togglePlay,
+    playPreviousTrack,
+    playNextTrack,
     playTrack,
     currentTrackIndex: state.currentTrackIndex,
     currentTrackName:

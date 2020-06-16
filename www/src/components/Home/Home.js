@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import { MusicPlayerContext } from "../../context/MusicPlayerContext"
+import MusicPlayerProvider from "../../context/MusicPlayerContext"
 import useMusicPlayer from "../../hooks/useMusicPlayer"
 
 const Single = ({ name, tracks }) => {
@@ -18,21 +19,21 @@ const Single = ({ name, tracks }) => {
   useEffect(() => {
     stopPlay()
     makeAudio(tracks)
-    setState(state => ({ ...state, tracks: tracks, currentTrackIndex: null }))
+    setState(state => ({ ...state, tracks: tracks, currentTrackIndex: 0 }))
   }, [])
 
   console.log("Single -> state", state)
   return (
-    <>
+    <MusicPlayerProvider>
       <h2>{name}</h2>
 
       <ul>
-        {tracks.map((track, index) => (
+        {tracks.map((track, i) => (
           <li key={track._id}>
             <div>
               <strong>{track.name}</strong>
 
-              <button onClick={() => playTrack(index)}>
+              <button onClick={() => playTrack(i)}>
                 {currentTrackName === track.name && isPlaying
                   ? "PAUSE"
                   : "PLAY"}
@@ -47,7 +48,7 @@ const Single = ({ name, tracks }) => {
         {currentTrackName}
       </marquee>
       <Link to="/singles">Back</Link>
-    </>
+    </MusicPlayerProvider>
   )
 }
 
