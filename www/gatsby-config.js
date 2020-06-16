@@ -14,5 +14,6 @@ module.exports = {
         dataset: "production",
       },
     },
+    `gatsby-image`,
   ],
 }

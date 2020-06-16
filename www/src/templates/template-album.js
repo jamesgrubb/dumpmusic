@@ -6,6 +6,13 @@ export const data = graphql`
   query($slug: String!) {
     sanityAlbum(slug: { current: { eq: $slug } }) {
       name
+      artwork {
+        asset {
+          fluid(maxWidth: 700) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
       slug {
         current
       }

@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import { MusicPlayerContext } from "../../context/MusicPlayerContext"
 import useMusicPlayer from "../../hooks/useMusicPlayer"
 
-const Album = ({ name, tracks, slug }) => {
+const Album = ({ name, tracks, slug, artwork }) => {
   const {
     stopPlay,
     playTrack,
@@ -21,7 +22,7 @@ const Album = ({ name, tracks, slug }) => {
     setState(state => ({ ...state, tracks: tracks, currentTrackIndex: null }))
   }, [])
 
-  console.log("Album -> state", state)
+  console.log("Album -> state", artwork.asset.fluid)
   return (
     <>
       <h2>{name}</h2>
@@ -44,6 +45,7 @@ const Album = ({ name, tracks, slug }) => {
           </li>
         ))}
       </ul>
+      <Img fluid={artwork.asset.fluid} alt={name} />
       <marquee behavior="scroll" direction="left">
         {currentTrackName}
       </marquee>
