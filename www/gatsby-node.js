@@ -7,13 +7,26 @@ exports.createPages = async ({
     path: "/singles",
     component: require.resolve("./src/templates/template-singles.js"),
   })
-
+  createPage({
+    path: "/albums",
+    component: require.resolve("./src/templates/template-albums.js"),
+  })
   const result = await graphql(`
     query {
       allSanitySingle {
         edges {
           node {
             _id
+            slug {
+              current
+            }
+          }
+        }
+      }
+      allSanityAlbum {
+        edges {
+          node {
+            name
             slug {
               current
             }
@@ -33,6 +46,16 @@ exports.createPages = async ({
       component: require.resolve("./src/templates/template-single.js"),
       context: {
         slug: single.slug.current,
+      },
+    })
+  })
+  const albums = result.data.allSanityAlbum.edges.map(({ node }) => node)
+  albums.forEach(album => {
+    createPage({
+      path: `/album/${album.slug.current}`,
+      component: require.resolve("./src/templates/template-album.js"),
+      context: {
+        slug: album.slug.current,
       },
     })
   })
