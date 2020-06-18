@@ -28,7 +28,7 @@ const Album = ({ name, tracks, slug, artwork }) => {
   console.log("Album -> state", artwork.asset.fluid)
   return (
     <>
-      <Layout>
+      <Layout title={name}>
         <h2>{name}</h2>
 
         <a href={slug.current}>Share</a>
