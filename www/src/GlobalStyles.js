@@ -55,7 +55,9 @@ button:-moz-focusring {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    border: 1px solid #f00 !important;
     }
+     
 body{
     font-family: Recursive, sans-serif;
     font-variation-settings: 'wght' 300, "CASL" 0;

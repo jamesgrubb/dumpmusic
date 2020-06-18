@@ -50,7 +50,7 @@ const Layout = ({ children, className }) => {
           </filter>
         </defs>
       </Styled.Filter>
-      <Header icon={faInstagram} title="Bare" />
+      <Header title="Bare Music" />
       {children}
     </Styled.Main>
   )

@@ -51,7 +51,7 @@ const Album = ({ name, tracks, slug, artwork }) => {
         </ul>
       </Layout>
       <Image
-        style={{ position: "absolute" }}
+        style={{ position: "fixed" }}
         fluid={artwork.asset.fluid}
         alt={name}
       />
