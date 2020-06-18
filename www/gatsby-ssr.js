@@ -1,6 +1,9 @@
-const React = require("react")
-const MusicPlayerProvider = require("./src/context/MusicPlayerContext").default
+import React from "react"
+import MusicPlayerProvider from "./src/context/MusicPlayerContext"
+import { MediaContextProvider } from "./src/Media"
 
-exports.wrapRootElement = ({ element }) => (
-  <MusicPlayerProvider>{element}</MusicPlayerProvider>
+export const wrapRootElement = ({ element }) => (
+  <MediaContextProvider>
+    <MusicPlayerProvider>{element}</MusicPlayerProvider>
+  </MediaContextProvider>
 )
