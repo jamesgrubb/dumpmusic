@@ -1,6 +1,9 @@
 const React = require("react")
 const MusicPlayerProvider = require("./src/context/MusicPlayerContext").default
+const MediaContextProvider = require("./src/Media").default
 
 exports.wrapRootElement = ({ element }) => (
-  <MusicPlayerProvider>{element}</MusicPlayerProvider>
+  <MediaContextProvider>
+    <MusicPlayerProvider>{element}</MusicPlayerProvider>
+  </MediaContextProvider>
 )
