@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import { MusicPlayerContext } from "../../context/MusicPlayerContext"
 import useMusicPlayer from "../../hooks/useMusicPlayer"
 

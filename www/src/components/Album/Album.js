@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useRef } from "react"
 import { Link } from "gatsby"
 import Layout from "../Layout/Layout"
-// import Img from "gatsby-image"
-import Image from "../Image/Styles"
+import Img from "gatsby-image"
+import Image from "../Image/Image"
 import { MusicPlayerContext } from "../../context/MusicPlayerContext"
 import useMusicPlayer from "../../hooks/useMusicPlayer"
 
@@ -50,11 +50,23 @@ const Album = ({ name, tracks, slug, artwork }) => {
           ))}
         </ul>
       </Layout>
-      <Image
-        style={{ position: "fixed" }}
+      <Img
         fluid={artwork.asset.fluid}
-        alt={name}
+        style={{
+          position: "fixed",
+          top: "0",
+          width: "100%",
+          height: "100%",
+        }}
+        imgStyle={{
+          filter: "url(#duotone)",
+          transform: "scale(1.3)",
+          width: "120vw",
+          height: "120vh",
+          marginLeft: "-10vh",
+        }}
       />
+      {/* <Image fluid={artwork.asset.fluid} alt={name} /> */}
       <marquee behavior="scroll" direction="left">
         {currentTrackName}
       </marquee>

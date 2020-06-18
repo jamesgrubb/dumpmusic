@@ -1,16 +1,24 @@
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { position, layout } from "styled-system"
 
-export default styled(Img)`
-  filter: url("#duotone");
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 0;
+export const ImageWrapper = styled.figure`
+  display: block;
+  ${position};
+  ${layout}
   overflow: hidden;
+`
+
+export const Image = styled(Img)`
+  filter: url("#duotone");
+  transform: scale(1.3);
+  overflow: hidden;
+  width: 100%;
+  z-index: 0;
   > div {
+    border: 2px solid red;
+    /* width: 120vw;
+    height: 120vh; */
     transform: scale(1.3);
     transform-origin: center center;
   }

@@ -55,7 +55,7 @@ button:-moz-focusring {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
-    border: 1px solid #f00 !important;
+  
     }
      
 body{
