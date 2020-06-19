@@ -5,22 +5,16 @@ import {
   faFacebook,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
-const Header = ({ title }) => (
+
+export default ({ title }) => (
   <>
-    <h1>{title}</h1>
-    <div
-      style={{
-        display: "grid",
-        gridGap: "var(--space-xs)",
-        gridAutoFlow: "column",
-        alignSelf: "start",
-      }}
-    >
-      <Styled.Icon icon={faInstagram} />
-      <Styled.Icon icon={faFacebook} />
-      <Styled.Icon icon={faTwitter} />
-    </div>
+    <Styled.Header>
+      <Styled.Title>{title}</Styled.Title>
+      <Styled.Nav>
+        <Styled.Icon icon={faInstagram} />
+        <Styled.Icon icon={faFacebook} />
+        <Styled.Icon icon={faTwitter} />
+      </Styled.Nav>
+    </Styled.Header>
   </>
 )
-
-export default Header

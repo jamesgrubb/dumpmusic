@@ -1,24 +1,20 @@
 import React from "react"
 import * as Styled from "./Styles"
 import Header from "../Header/Header"
+import Wrapper from "../Wrapper/Wrapper"
 import Duotone from "../Duotone"
 import Helmet from "react-helmet"
 
-import {
-  faInstagram,
-  faFacebook,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons"
-const Layout = ({ children, className, title }) => {
+const Layout = ({ children, title }) => {
   return (
-    <>
+    <Wrapper width={[1 / 2, 1]} height="100vh">
       <Helmet title={`Bare Music --- ${title}`} />
-      <Styled.Main>
+      <Header title="Bare" />
+      <Wrapper height={"100%"}>
         <Duotone />
-        <Header title="Bare Music" />
         {children}
-      </Styled.Main>
-    </>
+      </Wrapper>
+    </Wrapper>
   )
 }
 
