@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { SvgWrapper } from "../SvgWrapper/Styles"
+import Svg from "../Svg/Svg"
 import { VisuallyHidden } from "../../css-helpers/cssHelpers"
 
-export const Duotone = styled(SvgWrapper)`
+export const Duotone = styled(Svg)`
   ${VisuallyHidden}
 `

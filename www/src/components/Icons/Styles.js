@@ -1,4 +1,9 @@
 import styled from "styled-components"
-import SvgWrapper from "../SvgWrapper"
-
-export const Icon = styled(SvgWrapper)``
+import Svg from "../Svg/Svg"
+import { layout,color,flexbox } from "styled-system"
+export const Icon = styled(Svg)`
+  fill: currentColor;
+  ${flexbox}
+  ${layout}
+  ${color}
+`
