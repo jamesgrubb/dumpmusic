@@ -14,7 +14,8 @@ module.exports = {
         dataset: "production",
       },
     },
+    `gatsby-plugin-styled-components`,
     `gatsby-image`,
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`,    
   ],
 }
